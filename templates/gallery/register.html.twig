@@ -1,0 +1,18 @@
+{% form_theme pieceForm 'bootstrap_4_layout.html.twig' %}
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout d'une catégorie{% endblock %}
+
+{% block body %}
+    <h1>Ajout d'une piece a votre galerie</h1>
+
+    {{ form_start(pieceForm) }}
+        {{ form_row(pieceForm.name) }}
+        {{ form_row(pieceForm.artist) }}
+        {{ form_row(pieceForm.imgURL) }}
+        {{ form_row(pieceForm.description) }}
+        {{ form_row(pieceForm.category) }}
+
+        <button class="btn btn-success">Ajouter</button>
+    {{ form_end(pieceForm) }}
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ user.username }}{% endblock %}
+
+{% block body %}
+    <h1>Galerie de {{ user.username }}</h1>
+
+    {% for pic in galleryList %}
+        <h3>{{ pic.name }}</h3><br>
+        <img class="card-img-top" src="{{ pic.imgURL }}" alt="Card image">
+        Dessinateur: {{ pic.artist }}<br>
+        Description: {{ pic.description }}<br>
+        Catégorie: {{ pic.category.catName }}<br>
+    {% endfor %}
+
+    <br>
+
+    {% for i in range(1, nbPage) %}
+        {% if page == i - 1 %}
+            <b><a href="{{ path('userProfile',{'userId': user.id,'page': i - 1}) }}">{{ i }}</a></b>
+        {% else %}
+            <a href="{{ path('userProfile',{'userId': user.id,'page': i - 1}) }}">{{ i }}</a>
+        {% endif %}
+        {% if not loop.last %}
+            &nbsp;-&nbsp;
+        {% endif %}
+    {% endfor %}
+
+{% endblock %}
+
